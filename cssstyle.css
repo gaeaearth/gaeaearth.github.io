@@ -64,6 +64,9 @@ a:hover {text-decoration: underline; color: darkgray;}
 }
 
 #last {width:100%; background-color:FFFFFF; text-align:center;}
+#lastcenter {width:100%; background-color:FFFFFF; text-align:center;
+        margin: 0;
+        padding: 0;}
 
 .cvitemize { font-size:110%; font-weight: bold;}
 .cvitem { font-weight: bold; font-family:Open Sans;}
