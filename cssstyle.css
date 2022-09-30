@@ -42,23 +42,16 @@
 	    border: none;
 	}
 /*</style>
-
 <style type="text/css">*/
   
-	:root {
-	    --font-color: #ffffff;
-	    --bg-color: #000000;
-		--lva-color:darkgray;
-		--hov-color:dimgray;
-		--wing-color:#2e313d;
-	  }
-	  [data-theme="dark"] {
+	:root{
 	    --font-color: #000000;
 	    --bg-color: #ffffff;
 		--lva-color:dimgray;
 		--hov-color:darkgray;
 		--wing-color:#EFEFEF;
 	  }
+	 
 	  
   a:link {text-decoration: none; color: var(--lva-color);}
   a:visited {text-decoration: none; color: var(--lva-color); }
@@ -83,7 +76,7 @@
 
 /*big screen / light mode setup*/		
 @media screen and (min-width: 1000px) and (prefers-color-scheme: light){
-    body{
+    body{background-color: var(--wing-color);
       color: var(--font-color);
     }
 #center {font-size:10pt; width:900px; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
@@ -91,7 +84,14 @@
 
 
 /*small screen / dark mode setup*/
-@media screen and (max-width: 1000px) and (prefers-color-scheme: dark){
+@media screen and (max-width: 1000px) and (prefers-color-scheme:dark){
+ :root{
+    --font-color: #ffffff;
+    --bg-color: #000000;
+	--lva-color:darkgray;
+	--hov-color:dimgray;
+	--wing-color:#2e313d;
+  }
 	body{background: var(--bg-color);
     color: var(--font-color);}
 #titlecontent {width:100%; font-family:Open Sans; text-align: center; font-weight: 500; margin: 0; padding: 0;}
@@ -101,8 +101,15 @@
 
 
 /*big screen / dark mode setup*/
-@media screen and (min-width: 1000px) and (prefers-color-scheme: dark){
-    body{
+@media screen and (min-width: 1000px) and (prefers-color-scheme:dark){
+ :root{
+    --font-color: #ffffff;
+    --bg-color: #000000;
+	--lva-color:darkgray;
+	--hov-color:dimgray;
+	--wing-color:#2e313d;
+  }
+    body{background-color: var(--wing-color);
       color: var(--font-color);
     }
 #center {font-size:10pt; width:900px; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
