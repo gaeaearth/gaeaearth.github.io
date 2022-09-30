@@ -44,36 +44,80 @@
 /*</style>
 
 <style type="text/css">*/
-
-a:link {text-decoration: none; color: dimgray;}
-a:visited {text-decoration: none; color: dimgray; }
-a:active {text-decoration: none;  color: dimgray;}
-a:hover {text-decoration: underline; color: darkgray;}
+  
+	:root {
+	    --font-color: #ffffff;
+	    --bg-color: #000000;
+		--lva-color:darkgray;
+		--hov-color:dimgray;
+		--wing-color:#2e313d;
+	  }
+	  [data-theme="dark"] {
+	    --font-color: #000000;
+	    --bg-color: #ffffff;
+		--lva-color:dimgray;
+		--hov-color:darkgray;
+		--wing-color:#EFEFEF;
+	  }
+	  
+  a:link {text-decoration: none; color: var(--lva-color);}
+  a:visited {text-decoration: none; color: var(--lva-color); }
+  a:active {text-decoration: none;  color: var(--lva-color);}
+  a:hover {text-decoration: underline; color: var(--hov-color);}
+  body{background-color: var(--wing-color)}
+  
 /*</style>
-
 <style type="text/css">*/
+
 #title {font-weight:bold; font-size:300%; font-family:Open Sans;  text-align: center;}
-#titlecontent { font-family:Open Sans;  text-align: center; font-weight: 500;}
 
-@media screen and (max-width: 1000px){
-#center {font-size:10pt; width:90%; background-color:FFFFFF; font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
+
+/*small screen / light mode setup*/
+@media screen and (max-width: 1000px) and (prefers-color-scheme: light){
+	body{background: var(--bg-color);
+    color: var(--font-color);}
+#titlecontent {width:100%; font-family:Open Sans; text-align: center; font-weight: 500; margin: 0; padding: 0;}
+#lastcenter {width:100%; text-align:center; margin: 0; padding: 0;}
+#center {font-size:10pt; width:90%; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
 }
 
-@media screen and (min-width: 1000px) {
-#center {font-size:10pt; width:900px; background-color:FFFFFF; font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
+/*big screen / light mode setup*/		
+@media screen and (min-width: 1000px) and (prefers-color-scheme: light){
+    body{
+      color: var(--font-color);
+    }
+#center {font-size:10pt; width:900px; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
 }
 
-#last {width:100%; background-color:FFFFFF; text-align:center;}
-#lastcenter {width:100%; background-color:FFFFFF; text-align:center;
-        margin: 0;
-        padding: 0;}
+
+/*small screen / dark mode setup*/
+@media screen and (max-width: 1000px) and (prefers-color-scheme: dark){
+	body{background: var(--bg-color);
+    color: var(--font-color);}
+#titlecontent {width:100%; font-family:Open Sans; text-align: center; font-weight: 500; margin: 0; padding: 0;}
+#lastcenter {width:100%; text-align:center; margin: 0; padding: 0;}
+#center {font-size:10pt; width:90%; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
+}
+
+
+/*big screen / dark mode setup*/
+@media screen and (min-width: 1000px) and (prefers-color-scheme: dark){
+    body{
+      color: var(--font-color);
+    }
+#center {font-size:10pt; width:900px; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
+
+}
+#last {width:100%; text-align:center;}
+
 
 .cvitemize { font-size:110%; font-weight: bold;}
 .cvitem { font-weight: bold; font-family:Open Sans;}
 .cvperiod { float:right; font-family:Open Sans; font-style:italic;}
 .cvitemcontent { }
 /* </style>*/
- 
+
+
 
 /* <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
  */
