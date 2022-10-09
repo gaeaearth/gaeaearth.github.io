@@ -92,7 +92,7 @@
 	--hov-color:dimgray;
 	--wing-color:#2e313d;
   }
-	body{background: var(--bg-color);
+	body{background: var(--wing-color);
     color: var(--font-color);}
 #titlecontent {width:100%; font-family:Open Sans; text-align: center; font-weight: 500; margin: 0; padding: 0;}
 #lastcenter {width:100%; text-align:center; margin: 0; padding: 0;}
@@ -105,7 +105,7 @@
  :root{
     --font-color: #ffffff;
     --bg-color: #000000;
-	--lva-color:darkgray;
+	--lva-color:#B6B6B6;
 	--hov-color:dimgray;
 	--wing-color:#2e313d;
   }
@@ -117,14 +117,25 @@
 }
 #last {width:100%; text-align:center;}
 
-
+.explain_paper {font-weight:normal;font-size:90%;}
 .cvitemize { font-size:110%; font-weight: bold;}
 .cvitem { font-weight: bold; font-family:Open Sans;}
 .cvperiod { float:right; font-family:Open Sans; font-style:italic;}
 .cvitemcontent { }
 /* </style>*/
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
 
-
+details.description[open] summary::after {
+  content: attr(data-open);
+}
+details.description:not([open]) summary::after {
+  content: attr(data-close);
+}
 
 /* <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
  */
