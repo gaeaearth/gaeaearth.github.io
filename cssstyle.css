@@ -91,12 +91,14 @@
 	--lva-color:darkgray;
 	--hov-color:dimgray;
 	--wing-color:#2e313d;
+	--rel-width:90%;
   }
 	body{background: var(--wing-color);
     color: var(--font-color);}
 #titlecontent {width:100%; font-family:Open Sans; text-align: center; font-weight: 500; margin: 0; padding: 0;}
 #lastcenter {width:100%; text-align:center; margin: 0; padding: 0;}
 #center {font-size:10pt; width:90%; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
+#floating_menu {position: fixed; top: 0px; left: 50%; transform: translateX(-50%); height:50px;width:90%; text-align:center;  background-color:var(--bg-color); font-family:Open Sans;font-size:10pt; padding-top:0px;padding-right:10px; padding-bottom:0px; padding-left:10px; margin:0 auto;}
 }
 
 
@@ -108,12 +110,14 @@
 	--lva-color:#B6B6B6;
 	--hov-color:dimgray;
 	--wing-color:#2e313d;
+	--rel-width:900px;
   }
     body{background-color: var(--wing-color);
       color: var(--font-color);
     }
 #center {font-size:10pt; width:900px; background-color:var(--bg-color); font-family:Open Sans; padding-top:5px;padding-right:10px; padding-bottom:5px; padding-left:10px; margin:0 auto; }
-
+#floating_menu {position: fixed; top: 0px; left: 50%; transform: translateX(-50%); height:25px; width:900px; text-align:center;  background-color:white; font-family:Open Sans;font-size:10pt; padding-top:0px;padding-right:10px; padding-bottom:0px; padding-left:10px; margin:0 auto;overflow: hidden;background-color:var(--bg-color);font-weight: bold;}
+#text222{position: fixed; top: 0px; left: 50%; transform: translateX(-50%); height:25px; width:900px; text-align:center;  background-color:gray; font-family:Open Sans;font-size:10pt; padding-top:0px;padding-right:10px; padding-bottom:0px; padding-left:10px; margin:0 auto;overflow: hidden;}
 }
 #last {width:100%; text-align:center;}
 
@@ -122,6 +126,13 @@
 .cvitem { font-weight: bold; font-family:Open Sans;}
 .cvperiod { float:right; font-family:Open Sans; font-style:italic;}
 .cvitemcontent { }
+.anchor_inpage { padding-top: 0px; }
+:target:before {
+content:"";
+display:block;
+height:30px; /* fixed header height*/
+margin:-30px 0 0; /* negative fixed header height */
+}
 /* </style>*/
 details > summary {
   list-style: none;
