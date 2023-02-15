@@ -148,7 +148,8 @@
   color: #4cc9f0;
   text-shadow: 0 1px #4361ee, 0 2px #4361ee, 0 3px #4361ee;
 }
-
+.sign0 {
+  position: relative;font-size:0%;}
 .sign1 {
 	  z-index:1;
   animation: bounce 1s ease infinite;
@@ -194,7 +195,7 @@
 	  width: 11px;
 	  height:2px;
 	  border-radius:50%;
-	  top:17px;
+	  top:16.6px;
 	  z-index:0;
 	}
 	.bouncing-text:after {
@@ -204,13 +205,13 @@
 	  width: 10px;
 	  height:2px;
 	  border-radius:50%;
-	  top:17px;
+	  top:16.6px;
 	  z-index:0;
 	}
 
 	.shadow {
 	  position: absolute;
-	  top:17px;
+	  top:16.6px;
 	  z-index:0;
 	}
 
