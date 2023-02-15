@@ -127,32 +127,52 @@
 .cvperiod { float:right; font-family:Open Sans; font-style:italic;}
 .cvitemcontent { }
 .anchor_inpage { padding-top: 0px; }
+/*.bouncing-text {
+  position: relative;
+  display: flex;
+  font-size: 10px; font-size:100%;
+  font-family: Open Sans; font-weight: bold;
+  }*/
+
+/*bouncing text*/
 .bouncing-text {
   position: relative;
   display: flex;
-  font-size: 70px;
-  font-family: arial black;  
+  font-size: 100%;
+  font-weight: 900;
+  font-family: Open Sans; font-weight: bold;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif; 
+  display: flex;
 }
-.new_sign_n,.new_sign_e,.new_sign_w {
+
+.sign1, .sign2, .sign3 {
+  position: relative;
   color: #4cc9f0;
-  text-shadow: 0 3px #4361ee, 0 5px #4361ee, 0 7px #4361ee;
+  text-shadow: 0 1px #4361ee, 0 2px #4361ee, 0 3px #4361ee;
 }
-.new_sign_n {
+
+.sign1 {
+	  z-index:1;
   animation: bounce 1s ease infinite;
   -webkit-animation: bounce 1s ease infinite;
 }
-.new_sign_e {
+
+.sign2 {
+	  z-index:1;
   animation: bounce 1s ease infinite .1s;
   -webkit-animation: bounce 1s ease infinite .1s;
 }
-.new_sign_w {
+
+.sign3 {
+	  z-index:1;
   animation: bounce 1s ease infinite .2s;
   -webkit-animation: bounce 1s ease infinite .2s;
 }
-@keyframes bounce {
+
+ @keyframes bounce {
         0%   { transform: scale(1,1) translateY(0); }
         10%  { transform: scale(1.1,.9) translateY(0); }
-        30%  { transform: scale(.9,1.1)   translateY(-55px);}
+        30%  { transform: scale(.9,1.1)   translateY(-19px);}
         50%  { transform: scale(1.05,.95) translateY(0); }
         58%  { transform: scale(1,1) translateY(-7px); }
         65%  { transform: scale(1,1) translateY(0);}
@@ -162,92 +182,94 @@
 @-webkit-keyframes bounce {
        0%   { transform: scale(1,1) translateY(0); }
         10%  { transform: scale(1.1,.9) translateY(0); }
-        30%  { transform: scale(.9,1.1)   translateY(-55px);}
+        30%  { transform: scale(.9,1.1)   translateY(-19px);}
         50%  { transform: scale(1.05,.95) translateY(0); }
         58%  { transform: scale(1,1) translateY(-7px);}
         65%  { transform: scale(1,1) translateY(0);}
         100% { transform: scale(1,1) translateY(0);} 
 }
+/*boundcing shadow*/
+	.bouncing-text:before {
+	  content:"";
+	  position: absolute;
+	  background-color: rgba(0,0,0,0.4);
+	  width: 11px;
+	  height:2px;
+	  border-radius:50%;
+	  top:17px;
+	  z-index:0;
+	}
+	.bouncing-text:after {
+	  content:"";
+	  position: absolute;
+	  background-color: rgba(0,0,0,0.4);
+	  width: 10px;
+	  height:2px;
+	  border-radius:50%;
+	  top:17px;
+	  z-index:0;
+	}
 
+	.shadow {
+	  position: absolute;
+	  top:17px;
+	  z-index:0;
+	}
 
-.bouncing-text:before, .bouncing-text:after {
-  content:"";
-  position: absolute;
-  background-color: rgba(0,0,0,0.4);
-  width: 50px;
-  height:5px;
-  border-radius:50%;
-  top:82px;
-  z-index:-1;
-}
+	.shadow:before {
+	  content:"";
+	  position: absolute;
+	  background-color: rgba(0,0,0,0.4);
+	  width: 12.5px;
+	  height:2px;
+	  border-radius:50%;
+	  top:0;  
+	}
+/*	.shadow:after {
+	  content:"";
+	  position: absolute;
+	  background-color: rgba(0,0,0,1);
+	  width: 9px;
+	  height:2px;
+	  border-radius:50%;
+	  top:0;  
+	}*/
 
-.shadow, .shadow-two {
-  position: absolute;
-  top:82px;
-  z-index:-1;
-}
+	.bouncing-text:before {
+	  left:0;
+	  animation: scale 1s linear infinite;
+	  -webkit-animation: scale 1s linear infinite;
+	}
 
-.shadow:before, .shadow:after, .shadow-two:before, .shadow-two:after {
-  content:"";
-  position: absolute;
-  background-color: rgba(0,0,0,0.4);
-  width: 50px;
-  height:5px;
-  border-radius:50%;
-  top:0;  
-}
+	@keyframes scale {
+	  0% {transform: scaleX(1);}
+	  25% {transform: scaleX(0.4);}
+	  50% {transform: scaleX(1);}
+	  75% {transform: scaleX(0.9);}
+	  100% {transform: scaleX(1);}
+	}
 
-.bouncing-text:before {
-  left:0;
-  animation: scale 1s linear infinite;
-  -webkit-animation: scale 1s linear infinite;
-}
+	@-webkit-keyframes scale {
+	   0% {transform: scaleX(1);}
+	  25% {transform: scaleX(0.4);}
+	  50% {transform: scaleX(1);}
+	  75% {transform: scaleX(0.9);}
+	  100% {transform: scaleX(1);}
+	}
 
-@keyframes scale {
-  0% {transform: scaleX(1);}
-  25% {transform: scaleX(0.4);}
-  50% {transform: scaleX(1);}
-  75% {transform: scaleX(0.9);}
-  100% {transform: scaleX(1);}
-}
+	.bouncing-text:after {
+	  left: 11px;
+	  animation: scale 1s linear infinite .1s;
+	  -webkit-animation: scale 1s linear infinite .1s;
+	}
 
-@-webkit-keyframes scale {
-   0% {transform: scaleX(1);}
-  25% {transform: scaleX(0.4);}
-  50% {transform: scaleX(1);}
-  75% {transform: scaleX(0.9);}
-  100% {transform: scaleX(1);}
-}
-
-.bouncing-text:after {
-  left: 57px;
-  animation: scale 1s linear infinite .1s;
-  -webkit-animation: scale 1s linear infinite .1s;
-}
-
-.shadow:before {
-  left: 116px;
-  animation: scale 1s linear infinite .2s;
-  -webkit-animation: scale 1s linear infinite .2s;
-}
-
-.shadow:after {
-  left:175px;
-  animation: scale 1s linear infinite .3s;
-  -webkit-animation: scale 1s linear infinite .3s;
-}
-
-.shadow-two:before {
-  left:232px;
-  animation: scale 1s linear infinite .4s;
-  -webkit-animation: scale 1s linear infinite .4s;
-}
-
-.shadow-two:after {
-  left: 285px;
-  animation: scale 1s linear infinite .5s;
-  -webkit-animation: scale 1s linear infinite .5s;
-}
+	.shadow:before {
+	  left: 21px;
+	  animation: scale 1s linear infinite .2s;
+	  -webkit-animation: scale 1s linear infinite .2s;
+	}
+	.paper_title {
+  font-family: Open Sans; font-weight: bold;}
 
 
 :target:before {
