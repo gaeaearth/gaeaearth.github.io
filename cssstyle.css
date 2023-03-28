@@ -297,7 +297,7 @@ details.description:not([open]) summary::after {
  */
  
 .click-zoom input[type=checkbox] {
-  display: none
+  display: none;
 }
 
 .click-zoom img {
