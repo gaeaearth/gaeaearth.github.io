@@ -4,7 +4,7 @@
 <title>SangEun Han</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes"/>
-
+<meta charset="utf-8">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- png favicon--> 
@@ -27,19 +27,27 @@
 <meta name="theme-color" content="#ffffff">
 <!-- --> 
 
-<link rel="stylesheet" href="cssstyle.css">
-<script src="scripts.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../cssstyle.css">
+<link rel="stylesheet" href="../css_arxiv.css">
+<script src="../scripts.js"></script>
 
 </head>
+<body>
 
-
-<body style="background-color: var(--bg-color)">
 <div id="center">
 
-<div style="font-size:75%" id="lastcenter">since 2014-12-31 / last update 2023-04-29</div>
+<div id="title">Today's arXiv</div>
+<iframe src="../titlecontent.html" style="width:100%; height:63; border:none"></iframe>
+<!---<div id="titlecontent">
+<span class="cvitemcontent">e-mail: sehan at kaist.ac.kr<br>
+<a href="http://physics.kaist.ac.kr/">Department of Physics</a><br>
+<a href="http://www.kaist.ac.kr/">Korea Advanced Institute of Science and Technology (KAIST)</a></span></div>-->
+<br>
+<p class="p1">20230501</p>
+	<iframe src="../last.html" style="width:100%; height:26; border:none"></iframe>
+	</div>
+
+<!--<div style="font-size:75%" id="last">since 2014-12-31 / last update 2019-12-06</div>-->
 
 </div>
 </body>
