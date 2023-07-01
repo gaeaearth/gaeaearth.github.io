@@ -143,7 +143,7 @@
   font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif; 
 }
 
-.sign1, .sign2, .sign3 {
+.sign1, .sign2, .sign3, .sign4, .sign5, .sign6, .sign7, .sign8, .sign9, .sign10 {
   position: relative;
   color: #4cc9f0;
   text-shadow: 0 1px #4361ee, 0 2px #4361ee, 0 3px #4361ee;
@@ -167,6 +167,102 @@
   animation: bounce 1s ease infinite .2s;
   -webkit-animation: bounce 1s ease infinite .2s;
 }
+
+.sign4 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .3s;
+  -webkit-animation: bounce 1s ease infinite .3s;
+}
+
+.sign5 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .4s;
+  -webkit-animation: bounce 1s ease infinite .4s;
+}
+
+.sign6 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .5s;
+  -webkit-animation: bounce 1s ease infinite .5s;
+}
+
+.sign7 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .6s;
+  -webkit-animation: bounce 1s ease infinite .6s;
+}
+
+.sign8 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .7s;
+  -webkit-animation: bounce 1s ease infinite .7s;
+}
+
+.sign9 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .8s;
+  -webkit-animation: bounce 1s ease infinite .8s;
+}
+
+.sign10 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .9s;
+  -webkit-animation: bounce 1s ease infinite .9s;
+}
+
+/*bouncing publication*/.Psign1, .Psign2, .Psign3, .Psign4, .Psign5, .Psign6, .Psign7, .Psign8, .Psign9 {
+  position: relative;
+  color: #f04c65;
+  text-shadow: 0 1px #f361ee, 0 2px #f361ee, 0 3px #f361ee;
+}
+.Psign0 {
+  position: relative;font-size:0%;}
+.Psign1 {
+	  z-index:1;
+  animation: bounce 1s ease infinite;
+  -webkit-animation: bounce 1s ease infinite;
+}
+.Psign2 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .05s;
+  -webkit-animation: bounce 1s ease infinite .05s;
+}
+.Psign3 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .1s;
+  -webkit-animation: bounce 1s ease infinite .1s;
+}
+.Psign4 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .15s;
+  -webkit-animation: bounce 1s ease infinite .15s;
+}
+.Psign5 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .2s;
+  -webkit-animation: bounce 1s ease infinite .2s;
+}
+.Psign6 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .25s;
+  -webkit-animation: bounce 1s ease infinite .25s;
+}
+.Psign7 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .3s;
+  -webkit-animation: bounce 1s ease infinite .3s;
+}
+.Psign8 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .35s;
+  -webkit-animation: bounce 1s ease infinite .35s;
+}
+.Psign9 {
+	  z-index:1;
+  animation: bounce 1s ease infinite .4s;
+  -webkit-animation: bounce 1s ease infinite .4s;
+}
+/*bouncing publication*/
 
  @keyframes bounce {
         0%   { transform: scale(1,1) translateY(0); }
