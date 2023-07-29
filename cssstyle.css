@@ -212,8 +212,8 @@
 
 /*bouncing publication*/.Psign1, .Psign2, .Psign3, .Psign4, .Psign5, .Psign6, .Psign7, .Psign8, .Psign9 {
   position: relative;
-  color: #f04c65;
-  text-shadow: 0 1px #f361ee, 0 2px #f361ee, 0 3px #f361ee;
+  color: #f56ef3;
+  text-shadow: 0 1px #f0415b, 0 2px #f0415b, 0 3px #f0415b;
 }
 .Psign0 {
   position: relative;font-size:0%;}
