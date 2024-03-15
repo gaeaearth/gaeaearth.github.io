@@ -29,6 +29,16 @@
 <!-- --> 
 
 <script src="scripts.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/x-mathjax-config">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -36,6 +46,8 @@
 
 
 </head>
+$\mathcal{S}$\[\mathcal{S}\]
+$$\mathcal{L}$$
 
 <body>
 <div id="center">
@@ -68,12 +80,13 @@ My recent talk: <a href="https://meetings.aps.org/Meeting/MAR22/Event/433747">"F
 <!-- NEWS -->
 	<div class="cvitemize"> <a href="#publication" class="anchor_inpage"  style="text-decoration:none;color:var(--font-color)">Recent News</a> </div>
 	<ul><!--<li>Now I am looking for next position starting in (maybe) September 2023. Please contact me by email (se.han[at]utoronto.ca or sehan.physics[at]gmail.com) if you are interested in me.</li>
-	-->
-		<li><b>[Mar. 2024]</b> I will give a <a href="#contributed" style="text-decoration:none;color:var(--font-color)">contributed talk</a> <a href="https://meetings.aps.org/Meeting/MAR24/Session/A07.5" style="font-style: italic;">"Bosonization of Non-Fermi Liquids" (2023/03/04 08:48 AM, Room L100H)</a> at APS march meeting 2024, Minneapolis, Minnesota, USA!
+	--></li><li><b>[Mar. 2024]</b> The <a href="#publication" style="text-decoration:none;color:var(--font-color)">preprint of my new paper</a> <a href="https://arxiv.org/abs/2403.09627" style="font-style: italic;">"On spontaneous breaking of the SO(2N) symmetry in the Gross-Neveu model (arXiv:2403.09627)"</a> has been posted on arXiv!
+		</li>
+		<li><b>[Mar. 2024]</b> I have given a <a href="#contributed" style="text-decoration:none;color:var(--font-color)">contributed talk</a> <a href="https://meetings.aps.org/Meeting/MAR24/Session/A07.5" style="font-style: italic;">"Bosonization of Non-Fermi Liquids" (2023/03/04 08:48 AM, Room L100H)</a> at APS march meeting 2024, Minneapolis, Minnesota, USA!
 <!--			<div style="overflow: visible"><details class="description" close><summary data-open="[Close]" data-close="[Details]"></summary><img src="img/march2023_ads.png" width="100%" alt="Summary of Talk"></details></div>
 			-->
 			</li>
-		<li><b>[Sep. 2023]</b> I will join <a href="https://www.sfu.ca/physics/people/faculty/iherbut.html" style="font-style: italic;">Professor Igor Herbut's group</a>, at <span style="font-style: italic;">Simon Fraser University, Burnaby, Canada</span>.
+		<li><b>[Sep. 2023]</b> I joined <a href="https://www.sfu.ca/physics/people/faculty/iherbut.html" style="font-style: italic;">Professor Igor Herbut's group</a>, at <span style="font-style: italic;">Simon Fraser University, Burnaby, Canada</span>.
 			</li>
 		<li><b>[Aug. 2023]</b> I have moved to Vancouver! My new email address is 'sangeun_han at sfu.ca'.
 			</li>
@@ -100,7 +113,7 @@ My recent talk: <a href="https://meetings.aps.org/Meeting/MAR22/Event/433747">"F
 	<li><b>[Feb. 2023]</b> The <a href="#publication" style="text-decoration:none;color:var(--font-color)">preprint of my new paper</a> <a href="https://arxiv.org/abs/2302.07883" style="font-style: italic;">"Complex fixed points of the non-Hermitian Kondo model in a Luttinger liquid (arXiv:2302.07883)"</a> has been posted on arXiv!
 	</li></ul>
 	</details><br>
-<a id="Full_CV" class="anchor_inpage"  style="text-decoration:none;color:var(--font-color)">pdf version of CV: </a><a href="20240301_SangEun_Han_Curriculum_Vitae.pdf">here (updated at 2024/03/01)</a>
+<a id="Full_CV" class="anchor_inpage"  style="text-decoration:none;color:var(--font-color)">pdf version of CV: </a><a href="20240314_SangEun_Han_Curriculum_Vitae.pdf">here (updated at 2024/03/14)</a>
 <br>
 TA class materials: <a href="taclass.html">here</a>
 <br><br>
@@ -123,37 +136,44 @@ Articles related to my works:
 	<div class="cvitemize"> <a id="publication" class="anchor_inpage"  style="text-decoration:none;color:var(--font-color)">Publication</a> </div>
 		<ul>
 		<!-- -->
-		<li><div class="paper_title" style="display: flex;">
-		<span class="cvitem"><div class="bouncing-text" style="display: inline-block;">
-  <div class="sign3" style="display: inline-block;">W</div>
-  <div class="sign1" style="display: inline-block;float: left;">N</div>
-  <div class="sign2" style="display: inline-block;float: left;">E</div>
-  <div class="shadow"></div></div>&nbsp<a href="https://arxiv.org/abs/2306.14955" style="text-decoration:none;color:var(--font-color)">"Bosonization of Non-Fermi Liquids"</a>
-					</span>
-				<span class="cvperiod"></span></div>
-				<div class="cvitemcontent" style="clear: left;"><b><u>SangEun Han</u></b>, <a href="https://scholar.google.com/citations?user=UwP0OJ8AAAAJ" style="text-decoration:none;color:var(--font-color)">F&eacute;lix Desrochers</a>, and <a href="https://sites.google.com/view/ybkimgroup/" style="text-decoration:none;color:var(--font-color)">Yong Baek Kim</a><br>
-			<a href="https://arxiv.org/abs/2306.14955">arXiv:2306.14955</a><div style="overflow: visible"><details class="description" close><summary data-open="[Close]" data-close="[Details]"></summary><span class="explain_paper"><div class="click-zoom">
-  <label>
-    <input type="checkbox">
-    <!--<img style="float:right;border-radius: 3px;border: 1px solid transparent;border-color:black;background-color:#ffffff;" src="img/nonhermitian_Luttinger-Kondo.svg" alt="Phase diagram and RG flows of topological phase transition in line-nodal superconductor." width=30% >-->
-  </label>
-</div> Understanding non-Fermi liquids in dimensions higher than one remains one of the most formidable challenges in modern condensed matter physics. These systems, characterized by an abundance of gapless degrees of freedom and the absence of well-defined quasiparticles, defy conventional analytical frameworks. Inspired by recent work on the bosonization of Fermi surfaces [Delacretaz, Du, Mehta, and Son, Physical Review Research, 4, 033131 (2022)], we present a procedure for bosonizing non-Fermi liquids, which provides a holistic approach capable of addressing their intricate physics. Our method involves parameterizing the generalized fermionic distribution function through a bosonic field that describes frequency-dependent local variations of the chemical potential in momentum space. We propose an effective action that produces the collisionless quantum Boltzmann equation as its equation of motion and can straightforwardly be used for any dimension and Fermi surface of interest. Even at the quadratic order, this action reproduces highly non-trivial results obtainable only through involved analysis with alternative means. By offering a comprehensive description of the physics of non-Fermi liquids, our work stands as an important building block in advancing the comprehension of strange metals and associated phenomena.
-</span></details></div>
-		</li>
+				<li><div class="paper_title" style="display: flex;">
+				<span class="cvitem"><div class="bouncing-text" style="display: inline-block;">
+		  <div class="sign3" style="display: inline-block;">W</div>
+		  <div class="sign1" style="display: inline-block;float: left;">N</div>
+		  <div class="sign2" style="display: inline-block;float: left;">E</div>
+		  <div class="shadow"></div></div>&nbsp<a href="https://arxiv.org/abs/2306.14955" style="text-decoration:none;color:var(--font-color)">"On spontaneous breaking of the SO(2N) symmetry in the Gross-Neveu model"</a>
+							</span>
+						<span class="cvperiod"></span></div>
+						<div class="cvitemcontent" style="clear: left;"><b><u>SangEun Han</u></b> and <a href="https://www.sfu.ca/physics/people/faculty/iherbut.html" style="text-decoration:none;color:var(--font-color)">Igor F. Herbut</a><br>
+					<a href="https://arxiv.org/abs/2403.09627">arXiv:2403.09627</a><div style="overflow: visible"><details class="description" close><summary data-open="[Close]" data-close="[Details]"></summary><span class="explain_paper"><div class="click-zoom">
+		  <label>
+		    <input type="checkbox">
+		    <!--<img style="float:right;border-radius: 3px;border: 1px solid transparent;border-color:black;background-color:#ffffff;" src="img/nonhermitian_Luttinger-Kondo.svg" alt="Phase diagram and RG flows of topological phase transition in line-nodal superconductor." width=30% >-->
+		  </label>
+		</div> Understanding non-Fermi liquids in dimensions higher than one remains one of the most formidable challenges in modern condensed matter physics. These systems, characterized by an abundance of gapless degrees of freedom and the absence of well-defined quasiparticles, defy conventional analytical frameworks. Inspired by recent work on the bosonization of Fermi surfaces [Delacretaz, Du, Mehta, and Son, Physical Review Research, 4, 033131 (2022)], we present a procedure for bosonizing non-Fermi liquids, which provides a holistic approach capable of addressing their intricate physics. Our method involves parameterizing the generalized fermionic distribution function through a bosonic field that describes frequency-dependent local variations of the chemical potential in momentum space. We propose an effective action that produces the collisionless quantum Boltzmann equation as its equation of motion and can straightforwardly be used for any dimension and Fermi surface of interest. Even at the quadratic order, this action reproduces highly non-trivial results obtainable only through involved analysis with alternative means. By offering a comprehensive description of the physics of non-Fermi liquids, our work stands as an important building block in advancing the comprehension of strange metals and associated phenomena.
+		</span></details></div>
+				</li>
+						<li><div class="paper_title" style="display: flex;">
+						<span class="cvitem"><div class="bouncing-text" style="display: inline-block;">
+				  <div class="sign3" style="display: inline-block;">W</div>
+				  <div class="sign1" style="display: inline-block;float: left;">N</div>
+				  <div class="sign2" style="display: inline-block;float: left;">E</div>
+				  <div class="shadow"></div></div>&nbsp<a href="https://arxiv.org/abs/2306.14955" style="text-decoration:none;color:var(--font-color)">"Bosonization of Non-Fermi Liquids"</a>
+									</span>
+								<span class="cvperiod"></span></div>
+								<div class="cvitemcontent" style="clear: left;"><b><u>SangEun Han</u></b>, <a href="https://scholar.google.com/citations?user=UwP0OJ8AAAAJ" style="text-decoration:none;color:var(--font-color)">F&eacute;lix Desrochers</a>, and <a href="https://sites.google.com/view/ybkimgroup/" style="text-decoration:none;color:var(--font-color)">Yong Baek Kim</a><br>
+							<a href="https://arxiv.org/abs/2306.14955">arXiv:2306.14955</a><div style="overflow: visible"><details class="description" close><summary data-open="[Close]" data-close="[Details]"></summary><span class="explain_paper"><div class="click-zoom">
+				  <label>
+				    <input type="checkbox">
+				    <!--<img style="float:right;border-radius: 3px;border: 1px solid transparent;border-color:black;background-color:#ffffff;" src="img/nonhermitian_Luttinger-Kondo.svg" alt="Phase diagram and RG flows of topological phase transition in line-nodal superconductor." width=30% >-->
+				  </label>
+				</div> Understanding non-Fermi liquids in dimensions higher than one remains one of the most formidable challenges in modern condensed matter physics. These systems, characterized by an abundance of gapless degrees of freedom and the absence of well-defined quasiparticles, defy conventional analytical frameworks. Inspired by recent work on the bosonization of Fermi surfaces [Delacretaz, Du, Mehta, and Son, Physical Review Research, 4, 033131 (2022)], we present a procedure for bosonizing non-Fermi liquids, which provides a holistic approach capable of addressing their intricate physics. Our method involves parameterizing the generalized fermionic distribution function through a bosonic field that describes frequency-dependent local variations of the chemical potential in momentum space. We propose an effective action that produces the collisionless quantum Boltzmann equation as its equation of motion and can straightforwardly be used for any dimension and Fermi surface of interest. Even at the quadratic order, this action reproduces highly non-trivial results obtainable only through involved analysis with alternative means. By offering a comprehensive description of the physics of non-Fermi liquids, our work stands as an important building block in advancing the comprehension of strange metals and associated phenomena.
+				</span></details></div>
+						</li>
 		<!-- -->
 				<!-- -->
 		  		<li><div>
-		  		<span class="cvitem"> <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.108.L060401" style="text-decoration:none;color:var(--font-color)">"Quantum impurity model for two-stage multipolar ordering and Fermi surface reconstruction"</a>&nbsp<div class="bouncing-text" style="display: inline-block;">
-		  <div class="Psign9" style="display: inline-block;">D</div>
-		  <div class="Psign1" style="display: inline-block;float: left;">P</div>
-		  <div class="Psign2" style="display: inline-block;float: left;">U</div>
-		  <div class="Psign3" style="display: inline-block;float: left;">B</div>
-		  <div class="Psign4" style="display: inline-block;float: left;">L</div>
-		  <div class="Psign5" style="display: inline-block;float: left;">I</div>
-		  <div class="Psign6" style="display: inline-block;float: left;">S</div>
-		  <div class="Psign7" style="display: inline-block;float: left;">H</div>
-		  <div class="Psign8" style="display: inline-block;float: left;">E</div>
-		  		  <div class="shadow"></div></span>
+		  		<span class="cvitem"> <a href="https://journals.aps.org/prb/abstract/10.1103/PhysRevB.108.L060401" style="text-decoration:none;color:var(--font-color)">"Quantum impurity model for two-stage multipolar ordering and Fermi surface reconstruction"</a></span>
 		  		<span class="cvperiod"></span>
 		  		</div>
 		  		<div class="cvitemcontent"> <b><u>SangEun Han</u></b>, <a href="https://sites.google.com/view/djschultz/" style="text-decoration:none;color:var(--font-color)">Daniel J. Schultz</a>, and <a href="https://sites.google.com/view/ybkimgroup/" style="text-decoration:none;color:var(--font-color)">Yong Baek Kim</a><br>
@@ -165,11 +185,7 @@ Articles related to my works:
 		  </div>Recent experiments on heavy fermion systems with higher-rank multipolar local moments provide a new platform to study such questions. In particular, experiments on Ce<sub>3</sub>Pd<sub>20</sub>(Si,Ge)<sub>6</sub> show novel quantum critical behaviors via two consecutive magnetic field-driven quantum phase transitions. At each transition, the derivative of the Hall conductivity jumps discontinuously, which was attributed to sequential Fermi surface reconstructions. Motivated by this discovery, we consider a microscopic model of itinerant electrons coupled to local dipolar, quadrupolar, and octupolar moments arising from Ce<sup>3+</sup> ions. Using renormalization group analyses, we demonstrate that numerous transitions can occur depending on which multipolar moments participate in the Fermi surface and which other moments are decoupled via Kondo destruction, and identify order parameters consistent with experiments. Our work offers a new theoretical framework for understanding multipolar quantum materials.</span></details></div>
 		  		</li>
 		  <li><div class="paper_title" style="display: flex;">
-				<span class="cvitem"><div class="bouncing-text" style="display: inline-block;">
-		  <div class="sign3" style="display: inline-block;">W</div>
-		  <div class="sign1" style="display: inline-block;float: left;">N</div>
-		  <div class="sign2" style="display: inline-block;float: left;">E</div>
-		  <div class="shadow"></div></div>&nbsp<a href="https://doi.org/10.1103/PhysRevB.107.235153" style="text-decoration:none;color:var(--font-color)">"Complex fixed points of the non-Hermitian Kondo model in a Luttinger liquid"</a>&nbsp<div class="bouncing-text" style="display: inline-block;">
+				<span class="cvitem"><a href="https://doi.org/10.1103/PhysRevB.107.235153" style="text-decoration:none;color:var(--font-color)">"Complex fixed points of the non-Hermitian Kondo model in a Luttinger liquid"</a><!--&nbsp<div class="bouncing-text" style="display: inline-block;">
 		  <div class="Psign9" style="display: inline-block;">D</div>
 		  <div class="Psign1" style="display: inline-block;float: left;">P</div>
 		  <div class="Psign2" style="display: inline-block;float: left;">U</div>
@@ -179,7 +195,7 @@ Articles related to my works:
 		  <div class="Psign6" style="display: inline-block;float: left;">S</div>
 		  <div class="Psign7" style="display: inline-block;float: left;">H</div>
 		  <div class="Psign8" style="display: inline-block;float: left;">E</div>
-		  <div class="shadow"></div>
+		  <div class="shadow"></div>-->
 					</span>
 				<span class="cvperiod"></span></div>
 				<div class="cvitemcontent" style="clear: left;"><b><u>SangEun Han</u></b>, <a href="https://sites.google.com/view/djschultz/" style="text-decoration:none;color:var(--font-color)">Daniel J. Schultz</a>, and <a href="https://sites.google.com/view/ybkimgroup/" style="text-decoration:none;color:var(--font-color)">Yong Baek Kim</a><br>
