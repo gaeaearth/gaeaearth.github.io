@@ -29,15 +29,19 @@
 <!-- --> 
 
 <script src="scripts.js"></script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script type="text/x-mathjax-config">
-window.MathJax = {
+
+<script>
+MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
   }
 };
 </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,9 +50,6 @@ window.MathJax = {
 
 
 </head>
-$\mathcal{S}$\[\mathcal{S}\]
-$$\mathcal{L}$$
-
 <body>
 <div id="center">
 <div id="floating_menu">
@@ -141,7 +142,7 @@ Articles related to my works:
 		  <div class="sign3" style="display: inline-block;">W</div>
 		  <div class="sign1" style="display: inline-block;float: left;">N</div>
 		  <div class="sign2" style="display: inline-block;float: left;">E</div>
-		  <div class="shadow"></div></div>&nbsp<a href="https://arxiv.org/abs/2306.14955" style="text-decoration:none;color:var(--font-color)">"On spontaneous breaking of the SO(2N) symmetry in the Gross-Neveu model"</a>
+		  <div class="shadow"></div></div>&nbsp<a href="https://arxiv.org/abs/2403.09627" style="text-decoration:none;color:var(--font-color)">"On spontaneous breaking of the SO(2N) symmetry in the Gross-Neveu model"</a>
 							</span>
 						<span class="cvperiod"></span></div>
 						<div class="cvitemcontent" style="clear: left;"><b><u>SangEun Han</u></b> and <a href="https://www.sfu.ca/physics/people/faculty/iherbut.html" style="text-decoration:none;color:var(--font-color)">Igor F. Herbut</a><br>
@@ -150,7 +151,7 @@ Articles related to my works:
 		    <input type="checkbox">
 		    <!--<img style="float:right;border-radius: 3px;border: 1px solid transparent;border-color:black;background-color:#ffffff;" src="img/nonhermitian_Luttinger-Kondo.svg" alt="Phase diagram and RG flows of topological phase transition in line-nodal superconductor." width=30% >-->
 		  </label>
-		</div> Understanding non-Fermi liquids in dimensions higher than one remains one of the most formidable challenges in modern condensed matter physics. These systems, characterized by an abundance of gapless degrees of freedom and the absence of well-defined quasiparticles, defy conventional analytical frameworks. Inspired by recent work on the bosonization of Fermi surfaces [Delacretaz, Du, Mehta, and Son, Physical Review Research, 4, 033131 (2022)], we present a procedure for bosonizing non-Fermi liquids, which provides a holistic approach capable of addressing their intricate physics. Our method involves parameterizing the generalized fermionic distribution function through a bosonic field that describes frequency-dependent local variations of the chemical potential in momentum space. We propose an effective action that produces the collisionless quantum Boltzmann equation as its equation of motion and can straightforwardly be used for any dimension and Fermi surface of interest. Even at the quadratic order, this action reproduces highly non-trivial results obtainable only through involved analysis with alternative means. By offering a comprehensive description of the physics of non-Fermi liquids, our work stands as an important building block in advancing the comprehension of strange metals and associated phenomena.
+		</div> The canonical Gross-Neveu model for $N$ two-component Dirac fermions in $2+1$ dimensions suffers a continuous phase transition at a critical interaction $g_{c1} \sim 1/N$ at large $N$, at which its continuous symmetry $\text{SO}(2N)$ is preserved and a discrete (Ising) symmetry becomes spontaneously broken. A recent mean-field calculation, however, points to an additional transition at a diffferent critical $g_{c2}\sim -N g_{c1}$, at which $\text{SO}(2N) \rightarrow \text{SO}(N) \times \text{SO}(N)$. To study the latter phase transition we rewrite the Gross-Neveu interaction $g (\bar{\psi} \psi)^2$ in terms of three different quartic terms for the single ($L=1$) $4N$-component real (Majorana) fermion, and then extend the theory to $L>1$. This allows us to track the evolution of the fixed points of the renormalization group transformation starting from $L\gg 1$, where one can discern three distinct critical points which correspond to continuous phase transitions into (1) $\text{SO}(2N)$-singlet mass-order-parameter, (2) $\text{SO}(2N)$-symmetric-tensor mass-order-parameters, and (3) $\text{SO}(2N)$-adjoint nematic-order-parameters, down to $L=1$ value that is relevant to standard Gross-Neveu model. Below the critical value of $L_c (N)\approx  0.35 N$ for $N\gg1$ only the Gross-Neveu critical point (1) still implies a diverging susceptibility for its corresponding  ($\text{SO}(2N)$-singlet) order parameter, whereas the two new  critical points that existed at large $L$ ultimately become equivalent to the Gaussian fixed point at $L=1$. We interpret this metamorphosis of the $\text{SO}(2N)$-symmetric-tensor fixed point from critical to spurious as an indication that the transition at $g_{c2}$ in the original Gross-Neveu model is turned first-order by fluctuations.
 		</span></details></div>
 				</li>
 						<li><div class="paper_title" style="display: flex;">
