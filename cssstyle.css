@@ -408,3 +408,23 @@ details.description:not([open]) summary::after {
 /*	width:90%;*/
   cursor: zoom-out
 }
+
+
+/* 기본 이미지 숨기기 */
+        .theme-light, .theme-dark {
+            display: none;
+        }
+
+        /* Light theme 설정 */
+        @media (prefers-color-scheme: light) {
+            .theme-light {
+                display: inline;
+            }
+        }
+
+        /* Dark theme 설정 */
+        @media (prefers-color-scheme: dark) {
+            .theme-dark {
+                display: inline;
+            }
+        }
