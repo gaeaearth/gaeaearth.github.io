@@ -196,10 +196,49 @@
           return [];
         }
         
-        return vehicles.filter(v => {
-          const nextStop = String(v.nextStopExtID || v.nextStopID);
-          const targetStop = String(stopID);
-          return nextStop === targetStop;
+        const approaching = vehicles.filter(v => {
+          // minutesToNextStops에서 해당 정거장 정보가 있는지 확인
+          if (!v.minutesToNextStops) return false;
+          
+          // minutesToNextStops가 배열인 경우
+          if (Array.isArray(v.minutesToNextStops)) {
+            return v.minutesToNextStops.some(stop => 
+              String(stop.stopID || stop.stopExtID || stop.id) === String(stopID)
+            );
+          }
+          
+          // minutesToNextStops가 객체인 경우
+          if (typeof v.minutesToNextStops === 'object') {
+            return Object.keys(v.minutesToNextStops).some(key => 
+              String(key) === String(stopID)
+            );
+          }
+          
+          return false;
+        }).map(v => {
+          // 해당 정거장까지의 시간 추출
+          let minutesToStop = null;
+          
+          if (Array.isArray(v.minutesToNextStops)) {
+            const stopInfo = v.minutesToNextStops.find(stop => 
+              String(stop.stopID || stop.stopExtID || stop.id) === String(stopID)
+            );
+            minutesToStop = stopInfo ? (stopInfo.minutes || stopInfo.eta || stopInfo.time) : null;
+          } else if (typeof v.minutesToNextStops === 'object') {
+            minutesToStop = v.minutesToNextStops[String(stopID)];
+          }
+          
+          return {
+            ...v,
+            minutesToThisStop: minutesToStop
+          };
+        });
+
+        // 도착 시간 순으로 정렬 (가장 빨리 도착하는 버스부터)
+        return approaching.sort((a, b) => {
+          const timeA = a.minutesToThisStop ?? Infinity;
+          const timeB = b.minutesToThisStop ?? Infinity;
+          return timeA - timeB;
         });
       };
 
@@ -217,12 +256,15 @@
         });
       };
 
-      // 초를 분으로 변환
-      const secondsToMinutes = (seconds) => {
-        if (!seconds || seconds < 0) return null;
-        const mins = Math.ceil(seconds / 60);
-        if (mins < 1) return '곧';
-        return `${mins}분`;
+      // 분 단위 시간을 표시 형식으로 변환
+      const formatMinutes = (minutes) => {
+        if (minutes === null || minutes === undefined || minutes < 0) return null;
+        if (minutes < 1) return '곧';
+        if (minutes < 60) return `${Math.round(minutes)}분`;
+        
+        const hours = Math.floor(minutes / 60);
+        const mins = Math.round(minutes % 60);
+        return mins > 0 ? `${hours}시간 ${mins}분` : `${hours}시간`;
       };
 
       const getColorClasses = (color) => {
@@ -328,7 +370,12 @@
           if (vehicleList.length > 0) {
             console.log('Vehicle summary:');
             vehicleList.forEach((v, i) => {
-              console.log(`  [${i}] Bus #${v.equipmentID}: nextStopExtID=${v.nextStopExtID}, lastStopExtID=${v.lastStopExtID}, atStop=${v.atStop}, ETA=${v.nextStopETA}s`);
+              console.log(`  [${i}] Bus #${v.equipmentID}:`, {
+                nextStopExtID: v.nextStopExtID,
+                lastStopExtID: v.lastStopExtID,
+                atStop: v.atStop,
+                minutesToNextStops: v.minutesToNextStops
+              });
             });
           }
           
@@ -496,20 +543,41 @@
                             const waiting = getWaitingBuses(station.id);
                             return (
                               <div key={station.id} className="text-xs text-gray-600 dark:text-gray-400 ml-2 mb-1">
-                                • {station.name}: 접근중 {approaching.length}대, 대기중 {waiting.length}대
+                                • {station.name}: 접근중 {approaching.length}대
+                                {approaching.length > 0 && ` (${approaching.map(b => `#${b.equipmentID}: ${b.minutesToThisStop}분`).join(', ')})`}
+                                , 대기중 {waiting.length}대
                               </div>
                             );
                           })}
+                          <div className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+                            <strong>minutesToNextStops 구조 예시:</strong>
+                            {vehicles[0] && vehicles[0].minutesToNextStops && (
+                              <pre className="bg-gray-100 dark:bg-gray-700 p-2 rounded mt-1 overflow-x-auto">
+                                {JSON.stringify(vehicles[0].minutesToNextStops, null, 2)}
+                              </pre>
+                            )}
+                          </div>
                         </div>
                       )}
                       {vehicles.length > 0 && (
                         <div className="mt-2 max-h-60 overflow-y-auto">
+                          <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">전체 버스 데이터 (처음 2개):</p>
                           <pre className="text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap">
-                            {JSON.stringify(vehicles.slice(0, 3), null, 2)}
+                            {JSON.stringify(vehicles.slice(0, 2).map(v => ({
+                              equipmentID: v.equipmentID,
+                              routeID: v.routeID,
+                              direction: v.direction,
+                              nextStopExtID: v.nextStopExtID,
+                              lastStopExtID: v.lastStopExtID,
+                              atStop: v.atStop,
+                              minutesToNextStops: v.minutesToNextStops,
+                              load: v.load,
+                              capacity: v.capacity
+                            })), null, 2)}
                           </pre>
-                          {vehicles.length > 3 && (
+                          {vehicles.length > 2 && (
                             <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-                              ... 그 외 {vehicles.length - 3}개 버스
+                              ... 그 외 {vehicles.length - 2}개 버스
                             </p>
                           )}
                         </div>
@@ -527,7 +595,7 @@
                         </code>
                       </p>
                       <p className="text-gray-700 dark:text-gray-300 mt-2">
-                        <strong>매칭 방식:</strong> nextStopExtID = 종점ID (접근중), lastStopExtID = 종점ID (대기중)
+                        <strong>매칭 방식:</strong> minutesToNextStops에 종점ID 포함 (접근중), lastStopExtID = 종점ID (대기중)
                       </p>
                     </div>
                   </div>
@@ -577,51 +645,6 @@
                       <h2 className={`text-xl font-bold ${colorClasses.title}`}>{station.name}</h2>
                     </div>
 
-                    {/* 접근 중인 버스 */}
-                    {approachingBuses.length > 0 && (
-                      <div className="mb-4">
-                        <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-400 mb-2 flex items-center gap-2">
-                          <BusIcon className="w-4 h-4" />
-                          🚍 종점으로 접근 중
-                        </h3>
-                        <div className="space-y-2">
-                          {approachingBuses.map((bus, index) => {
-                            const eta = secondsToMinutes(bus.nextStopETA);
-                            return (
-                              <div
-                                key={`approaching-${bus.equipmentID}-${index}`}
-                                className={`p-3 rounded-lg border-2 ${colorClasses.approaching} border-orange-300 dark:border-orange-600`}
-                              >
-                                <div className="flex justify-between items-center">
-                                  <div>
-                                    <div className="font-semibold text-orange-800 dark:text-orange-300">
-                                      버스 #{bus.equipmentID}
-                                    </div>
-                                    <div className="text-xs text-orange-600 dark:text-orange-400 mt-1">
-                                      {bus.direction} • 노선 {bus.routeID}
-                                    </div>
-                                    {bus.load !== undefined && bus.capacity && (
-                                      <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                        탑승: {bus.load}/{bus.capacity}명
-                                      </div>
-                                    )}
-                                  </div>
-                                  <div className="text-right">
-                                    <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-                                      {eta || '곧'}
-                                    </div>
-                                    <div className="text-xs text-orange-600 dark:text-orange-400">
-                                      후 도착
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-
                     {/* 대기 중인 버스 */}
                     {waitingBuses.length > 0 && (
                       <div className="mb-4">
@@ -650,6 +673,56 @@
                               </div>
                             </div>
                           ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 접근 중인 버스 */}
+                    {approachingBuses.length > 0 && (
+                      <div className="mb-4">
+                        <h3 className="text-sm font-semibold text-orange-700 dark:text-orange-400 mb-2 flex items-center gap-2">
+                          <BusIcon className="w-4 h-4" />
+                          🚍 종점으로 접근 중
+                        </h3>
+                        <div className="space-y-2">
+                          {approachingBuses.map((bus, index) => {
+                            const eta = formatMinutes(bus.minutesToThisStop);
+                            return (
+                              <div
+                                key={`approaching-${bus.equipmentID}-${index}`}
+                                className={`p-3 rounded-lg border-2 ${colorClasses.approaching} border-orange-300 dark:border-orange-600`}
+                              >
+                                <div className="flex justify-between items-center">
+                                  <div>
+                                    <div className="font-semibold text-orange-800 dark:text-orange-300">
+                                      버스 #{bus.equipmentID}
+                                    </div>
+                                    <div className="text-xs text-orange-600 dark:text-orange-400 mt-1">
+                                      {bus.direction} • 노선 {bus.routeID}
+                                    </div>
+                                    {bus.load !== undefined && bus.capacity && (
+                                      <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                                        탑승: {bus.load}/{bus.capacity}명
+                                      </div>
+                                    )}
+                                    {showDebug && (
+                                      <div className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                                        ETA: {bus.minutesToThisStop}분
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div className="text-right">
+                                    <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                                      {eta || '정보없음'}
+                                    </div>
+                                    <div className="text-xs text-orange-600 dark:text-orange-400">
+                                      후 도착
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
