@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Stony Brook 버스 스케줄</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -81,42 +85,70 @@
       const [vehicleError, setVehicleError] = useState(null);
       const [showDebug, setShowDebug] = useState(false);
       const [darkMode, setDarkMode] = useState(() => {
-        // 저장된 설정 확인
-        const saved = localStorage.getItem('darkMode');
-        if (saved !== null) {
-          return saved === 'true';
+        // 수동 설정 여부 확인
+        const manualSetting = localStorage.getItem('darkModeManual');
+        if (manualSetting === 'true') {
+          // 수동으로 설정한 경우 저장된 값 사용
+          return localStorage.getItem('darkMode') === 'true';
         }
-        // 시스템 설정 확인
+        // 시스템 설정 따르기
         return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      });
+      const [isManualMode, setIsManualMode] = useState(() => {
+        return localStorage.getItem('darkModeManual') === 'true';
       });
 
       // Dark mode 적용
       useEffect(() => {
         if (darkMode) {
           document.documentElement.classList.add('dark');
+          // 아이폰 사파리 상단 바 색상 변경
+          const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', '#1f2937');
+          }
         } else {
           document.documentElement.classList.remove('dark');
+          // 아이폰 사파리 상단 바 색상 변경
+          const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', '#ffffff');
+          }
         }
-        localStorage.setItem('darkMode', darkMode);
-      }, [darkMode]);
+        
+        // 수동 설정인 경우만 localStorage에 저장
+        if (isManualMode) {
+          localStorage.setItem('darkMode', darkMode);
+          localStorage.setItem('darkModeManual', 'true');
+        }
+      }, [darkMode, isManualMode]);
 
       // 시스템 설정 변경 감지
       useEffect(() => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const handleChange = (e) => {
-          // 사용자가 수동으로 설정하지 않은 경우만 시스템 설정 따르기
-          const saved = localStorage.getItem('darkMode');
-          if (saved === null) {
+          // 수동 모드가 아닐 때만 시스템 설정 따르기
+          if (!isManualMode) {
+            console.log('System dark mode changed:', e.matches);
             setDarkMode(e.matches);
           }
         };
         
         mediaQuery.addEventListener('change', handleChange);
         return () => mediaQuery.removeEventListener('change', handleChange);
-      }, []);
+      }, [isManualMode]);
 
       const toggleDarkMode = () => {
         setDarkMode(!darkMode);
+        setIsManualMode(true); // 수동으로 변경함을 표시
+      };
+
+      const resetToSystemMode = () => {
+        const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setDarkMode(systemDarkMode);
+        setIsManualMode(false);
+        localStorage.removeItem('darkMode');
+        localStorage.removeItem('darkModeManual');
       };
 
       const stations = [
@@ -381,7 +413,7 @@
 
       useEffect(() => {
         fetchSchedules();
-        const interval = setInterval(fetchSchedules, 60000);
+        const interval = setInterval(fetchSchedules, 15000); // 15초마다 업데이트
         return () => clearInterval(interval);
       }, []);
 
@@ -414,7 +446,17 @@
                     title={darkMode ? "라이트 모드로 전환" : "다크 모드로 전환"}
                   >
                     {darkMode ? <SunIcon className="w-5 h-5" /> : <MoonIcon className="w-5 h-5" />}
+                    {isManualMode && <span className="text-xs">🔒</span>}
                   </button>
+                  {isManualMode && (
+                    <button
+                      onClick={resetToSystemMode}
+                      className="flex items-center gap-2 bg-blue-200 dark:bg-blue-700 text-blue-800 dark:text-blue-200 px-3 py-2 rounded-lg hover:bg-blue-300 dark:hover:bg-blue-600 transition-colors text-sm"
+                      title="시스템 설정 따르기"
+                    >
+                      ⚙️
+                    </button>
+                  )}
                   <button
                     onClick={fetchSchedules}
                     disabled={loading}
@@ -486,6 +528,21 @@
                       </p>
                       <p className="text-gray-700 dark:text-gray-300 mt-2">
                         <strong>매칭 방식:</strong> nextStopExtID = 종점ID (접근중), lastStopExtID = 종점ID (대기중)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-yellow-700 dark:text-yellow-400 mb-2">다크모드 상태:</h4>
+                    <div className="bg-white dark:bg-gray-800 p-3 rounded border border-yellow-300 dark:border-yellow-700 text-xs">
+                      <p className="text-gray-700 dark:text-gray-300">
+                        <strong>현재 모드:</strong> {darkMode ? '다크모드' : '라이트모드'}
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-300 mt-1">
+                        <strong>설정 방식:</strong> {isManualMode ? '수동 설정 🔒' : '시스템 설정 따르기 ⚙️'}
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-300 mt-1">
+                        <strong>시스템 설정:</strong> {window.matchMedia('(prefers-color-scheme: dark)').matches ? '다크모드' : '라이트모드'}
                       </p>
                     </div>
                   </div>
@@ -676,7 +733,7 @@
 
             {/* Footer */}
             <div className="text-center text-gray-500 dark:text-gray-400 text-sm mt-8 space-y-2">
-              <div>자동으로 1분마다 업데이트됩니다</div>
+              <div>자동으로 15초마다 업데이트됩니다</div>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <div className="flex items-center gap-2">
                   <span className="text-orange-600 dark:text-orange-400">🚍</span>
@@ -691,6 +748,16 @@
                   <span className="text-green-600 dark:text-green-400">운행중인 버스</span>
                 </div>
               </div>
+              {isManualMode && (
+                <div className="text-xs text-blue-600 dark:text-blue-400 mt-2">
+                  🔒 수동 모드 활성화됨 • ⚙️ 버튼을 눌러 시스템 설정 따르기
+                </div>
+              )}
+              {!isManualMode && (
+                <div className="text-xs text-gray-400 dark:text-gray-500 mt-2">
+                  ⚙️ 시스템 설정에 따라 자동으로 다크모드 전환
+                </div>
+              )}
             </div>
           </div>
         </div>
